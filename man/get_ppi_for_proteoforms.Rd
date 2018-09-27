@@ -16,5 +16,5 @@ A dataframe containing the PTm dependent PPI for the given iPTMnet ID.
 Get Protein-Protein interactions along with corresponding proteoforms for the given iPTMnet ID.
 }
 \examples{
-ppi_proteoforms <- get_ppi_for_proteoforms("Q15796")
+\dontrun{ppi_proteoforms <- get_ppi_for_proteoforms("Q15796")}
 }

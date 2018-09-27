@@ -16,5 +16,5 @@ A list containing the information for the iPTMnet ID.
 Get the information for given iPTMnet ID.
 }
 \examples{
-info <- get_info("Q15796")
+\dontrun{info <- get_info("Q15796")}
 }

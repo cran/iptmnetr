@@ -4,7 +4,8 @@ library(jsonlite)
 iptmnet_env <- new.env()
 
 .onLoad <- function(libname, pkgname) {
-    set_host_url("http://aws3.proteininformationresource.org")
+    set_host_url("https://research.bioinformatics.udel.edu/iptmnet/api")
+    httr::set_config(httr::config(ssl_verifypeer = FALSE))
 }
 
 #' Set the url of iPTMnet API server.
@@ -17,7 +18,7 @@ iptmnet_env <- new.env()
 #' @export
 #'
 #' @examples
-#' set_host_url("http://www.example.com")
+#' \dontrun{set_host_url("http://www.example.com")}
 set_host_url <- function(url){
   assign("host_url",url, envir = iptmnet_env)
 }
@@ -32,7 +33,7 @@ set_host_url <- function(url){
 #' @export
 #'
 #' @examples
-#' url <- get_host_url()
+#' \dontrun{url <- get_host_url()}
 get_host_url <- function(){
   url <- get("host_url",envir = iptmnet_env)
   return <- url
@@ -50,7 +51,7 @@ get_host_url <- function(){
 #' @export
 #'
 #' @examples
-#' info <- get_info("Q15796")
+#' \dontrun{info <- get_info("Q15796")}
 get_info <- function(id){
   url <- sprintf("%s/%s/info",get_host_url(),id)
   result <- httr::GET(url)
@@ -86,11 +87,13 @@ get_info <- function(id){
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' result <- search_iptmnet(search_term = "smad2",
 #'                                         term_type=TermType()$ALL,
 #'                                         Role()$EnzymeOrSubstrate,
 #'                                         ptm_vector=c(),
 #'                                         organism_vector=c())
+#'}
 search_iptmnet <- function(search_term,term_type,role,ptm_vector=c(),organism_vector=c()){
   query_params <- list(
     search_term=search_term,
@@ -121,7 +124,7 @@ search_iptmnet <- function(search_term,term_type,role,ptm_vector=c(),organism_ve
 #' @export
 #'
 #' @examples
-#' substrates <- get_substrates("Q15796")
+#' \dontrun{substrates <- get_substrates("Q15796")}
 get_substrates <- function(id){
   url <- sprintf("%s/%s/substrate",get_host_url(),id)
   result <- httr::GET(url,httr::add_headers("Accept"="text/plain"))
@@ -143,7 +146,7 @@ get_substrates <- function(id){
 #' @export
 #'
 #' @examples
-#' proteoforms <- get_proteoforms("Q15796")
+#' \dontrun{proteoforms <- get_proteoforms("Q15796")}
 get_proteoforms <- function(id){
   url <- sprintf("%s/%s/proteoforms",get_host_url(),id)
   result <- httr::GET(url,httr::add_headers("Accept"="text/plain"))
@@ -167,7 +170,7 @@ get_proteoforms <- function(id){
 #' @export
 #'
 #' @examples
-#' ptm_dependent_ppi <- get_ptm_dependent_ppi("Q15796")
+#' \dontrun{ptm_dependent_ppi <- get_ptm_dependent_ppi("Q15796")}
 get_ptm_dependent_ppi <- function(id){
   url <- sprintf("%s/%s/ptmppi",get_host_url(),id)
   httr::set_config(httr::config(ssl_verifypeer = 0L))
@@ -192,7 +195,7 @@ get_ptm_dependent_ppi <- function(id){
 #' @export
 #'
 #' @examples
-#' ppi_proteoforms <- get_ppi_for_proteoforms("Q15796")
+#' \dontrun{ppi_proteoforms <- get_ppi_for_proteoforms("Q15796")}
 get_ppi_for_proteoforms <- function(id){
   url <- sprintf("%s/%s/proteoformsppi",get_host_url(),id)
   httr::set_config(httr::config(ssl_verifypeer = 0L))

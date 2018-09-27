@@ -5,18 +5,21 @@ context("iTPMnet API testing")
 
 
 testthat::test_that("get_info returns valid data", {
+  skip_on_cran()
   info <- get_info("Q15796")
   expect_equal(is.null(info),F)
 })
 
 testthat::test_that("search returns valid data", {
-  search_results <- search_iptmnet("Smad2",TermType()$ProteinOrGeneName,Role()$EnzymeOrSubstrate)
+  skip_on_cran()
+  search_results <- search_iptmnet("Smad2",TermType()$ALL,Role()$EnzymeOrSubstrate)
   row_count <- nrow(search_results)
   cd <- row_count != 0
   expect_equal(cd,TRUE)
 })
 
 test_that("get_substrates returns valid data",{
+  skip_on_cran()
   substrates <- get_substrates("Q15796")
   row_count <- nrow(substrates)
   cd <- row_count != 0
@@ -24,6 +27,7 @@ test_that("get_substrates returns valid data",{
 })
 
 test_that("get_proteoforms returns valid data",{
+  skip_on_cran()
   proteoforms <- get_proteoforms("Q15796")
   row_count <- nrow(proteoforms)
   cd <- row_count != 0
@@ -31,18 +35,21 @@ test_that("get_proteoforms returns valid data",{
 })
 
 test_that("get_ptmppi returns valid data",{
+  skip_on_cran()
   ptm_dep_ppi = get_ptm_dependent_ppi("Q15796")
   row_count <- nrow(ptm_dep_ppi)
   expect_equal(row_count != 0,TRUE)
 })
 
 test_that("test get_ppi_for_proteoforms returns valid data",{
+  skip_on_cran()
   ppi = get_ppi_for_proteoforms("Q15796")
   row_count <- nrow(ppi)
   expect_equal(row_count != 0,TRUE)
 })
 
 test_that("get_ptm_enzymes_from_list returns valid data", {
+  skip_on_cran()
   substrates = list(
     list(
       substrate_ac="Q15796",
@@ -73,6 +80,7 @@ test_that("get_ptm_enzymes_from_file returns valid data", {
 })
 
 test_that("test get_ptm_ppi_from_list returns valid data", {
+  skip_on_cran()
   substrates = list(
     list(
       substrate_ac="Q15796",
