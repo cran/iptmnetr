@@ -13,5 +13,5 @@ set_host_url(url)
 This function can be used to change the URL to use your own self hosted instance of iPTMnet API server.
 }
 \examples{
-\dontrun{set_host_url("http://www.example.com")}
+set_host_url("http://www.example.com")
 }

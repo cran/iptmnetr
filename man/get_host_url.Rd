@@ -13,5 +13,5 @@ A string representing the URL.
 Get the URl that is being used by the client for making the requests.
 }
 \examples{
-\dontrun{url <- get_host_url()}
+url <- get_host_url()
 }

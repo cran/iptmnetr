@@ -16,5 +16,5 @@ A dataframe containing the PTm dependent PPI for the given iPTMnet ID.
 Get Post translational modification(PTM) dependent Protein-Protein interactions for the given iPTMnet ID.
 }
 \examples{
-\dontrun{ptm_dependent_ppi <- get_ptm_dependent_ppi("Q15796")}
+ptm_dependent_ppi <- get_ptm_dependent_ppi("Q15796")
 }

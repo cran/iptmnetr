@@ -16,5 +16,5 @@ A dataframe containing the proteoforms for the given iPTMnet ID.
 Get proteoforms
 }
 \examples{
-\dontrun{proteoforms <- get_proteoforms("Q15796")}
+proteoforms <- get_proteoforms("Q15796")
 }

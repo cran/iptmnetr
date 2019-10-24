@@ -18,7 +18,7 @@ iptmnet_env <- new.env()
 #' @export
 #'
 #' @examples
-#' \dontrun{set_host_url("http://www.example.com")}
+#' set_host_url("http://www.example.com")
 set_host_url <- function(url){
   assign("host_url",url, envir = iptmnet_env)
 }
@@ -33,7 +33,7 @@ set_host_url <- function(url){
 #' @export
 #'
 #' @examples
-#' \dontrun{url <- get_host_url()}
+#' url <- get_host_url()
 get_host_url <- function(){
   url <- get("host_url",envir = iptmnet_env)
   return <- url
@@ -51,7 +51,7 @@ get_host_url <- function(){
 #' @export
 #'
 #' @examples
-#' \dontrun{info <- get_info("Q15796")}
+#' info <- get_info("Q15796")
 get_info <- function(id){
   url <- sprintf("%s/%s/info",get_host_url(),id)
   result <- httr::GET(url)
@@ -87,13 +87,11 @@ get_info <- function(id){
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' result <- search_iptmnet(search_term = "smad2",
 #'                                         term_type=TermType()$ALL,
 #'                                         Role()$EnzymeOrSubstrate,
 #'                                         ptm_vector=c(),
 #'                                         organism_vector=c())
-#'}
 search_iptmnet <- function(search_term,term_type,role,ptm_vector=c(),organism_vector=c()){
   query_params <- list(
     search_term=search_term,
@@ -124,7 +122,7 @@ search_iptmnet <- function(search_term,term_type,role,ptm_vector=c(),organism_ve
 #' @export
 #'
 #' @examples
-#' \dontrun{substrates <- get_substrates("Q15796")}
+#' substrates <- get_substrates("Q15796")
 get_substrates <- function(id){
   url <- sprintf("%s/%s/substrate",get_host_url(),id)
   result <- httr::GET(url,httr::add_headers("Accept"="text/plain"))
@@ -146,7 +144,7 @@ get_substrates <- function(id){
 #' @export
 #'
 #' @examples
-#' \dontrun{proteoforms <- get_proteoforms("Q15796")}
+#' proteoforms <- get_proteoforms("Q15796")
 get_proteoforms <- function(id){
   url <- sprintf("%s/%s/proteoforms",get_host_url(),id)
   result <- httr::GET(url,httr::add_headers("Accept"="text/plain"))
@@ -170,7 +168,7 @@ get_proteoforms <- function(id){
 #' @export
 #'
 #' @examples
-#' \dontrun{ptm_dependent_ppi <- get_ptm_dependent_ppi("Q15796")}
+#' ptm_dependent_ppi <- get_ptm_dependent_ppi("Q15796")
 get_ptm_dependent_ppi <- function(id){
   url <- sprintf("%s/%s/ptmppi",get_host_url(),id)
   httr::set_config(httr::config(ssl_verifypeer = 0L))
@@ -195,7 +193,7 @@ get_ptm_dependent_ppi <- function(id){
 #' @export
 #'
 #' @examples
-#' \dontrun{ppi_proteoforms <- get_ppi_for_proteoforms("Q15796")}
+#' ppi_proteoforms <- get_ppi_for_proteoforms("Q15796")
 get_ppi_for_proteoforms <- function(id){
   url <- sprintf("%s/%s/proteoformsppi",get_host_url(),id)
   httr::set_config(httr::config(ssl_verifypeer = 0L))
@@ -203,6 +201,30 @@ get_ppi_for_proteoforms <- function(id){
   if(httr::status_code(result) == 200){
     ppi_proteoforms = .to_dataframe(httr::content(result,"text"))
     return <- ppi_proteoforms
+  }else{
+    error_msg = .build_error_msg(result)
+    stop(error_msg)
+  }
+}
+
+#' Get variants.
+#'
+#' Get variants for the given iPTMnet ID.
+#'
+#' @param id A string representing iPTMnet ID.
+#'
+#' @return A dataframe containing the variants for the given iPTMnet ID.
+#' @export
+#'
+#' @examples
+#' variants <- get_variants("Q15796")
+get_variants <- function(id){
+  url <- sprintf("%s/%s/variants",get_host_url(),id)
+  httr::set_config(httr::config(ssl_verifypeer = 0L))
+  result <- httr::GET(url,httr::add_headers("Accept"="text/plain"))
+  if(httr::status_code(result) == 200){
+    variants = .to_dataframe(httr::content(result,"text"))
+    return <- variants
   }else{
     error_msg = .build_error_msg(result)
     stop(error_msg)

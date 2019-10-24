@@ -16,5 +16,5 @@ A dataframe containing the substrates for the given iPTMnet ID.
 Retrieves the substrates for the given iPTMnet ID.
 }
 \examples{
-\dontrun{substrates <- get_substrates("Q15796")}
+substrates <- get_substrates("Q15796")
 }

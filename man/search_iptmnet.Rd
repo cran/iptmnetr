@@ -31,11 +31,9 @@ A dataframe with search results.
 Searches the iPTMNet database with the given search parameters
 }
 \examples{
-\dontrun{
 result <- search_iptmnet(search_term = "smad2",
                                         term_type=TermType()$ALL,
                                         Role()$EnzymeOrSubstrate,
                                         ptm_vector=c(),
                                         organism_vector=c())
-}
 }
