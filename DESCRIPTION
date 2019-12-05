@@ -1,7 +1,7 @@
 Package: iptmnetr
 Type: Package
 Title: Interface to the 'iPTMnet' API
-Version: 0.1.6
+Version: 0.1.8
 Author: Sachin Gavali
 Maintainer: Sachin Gavali <saching@udel.edu>
 Description: Provides an R interface to the 'iPTMnet' database REST API, which can be used to retrieve 
@@ -17,6 +17,6 @@ Suggests: testthat
 Imports: httr, jsonlite
 RoxygenNote: 6.1.1
 NeedsCompilation: no
-Packaged: 2019-10-24 12:29:50 UTC; sachin
+Packaged: 2019-12-05 14:45:15 UTC; sachin
 Repository: CRAN
-Date/Publication: 2019-10-24 13:20:02 UTC
+Date/Publication: 2019-12-05 15:30:02 UTC

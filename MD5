@@ -1,10 +1,11 @@
-a5492ad4b57170fcaf1bdc6fb38f1e1a *DESCRIPTION
+065765fcb823ada8b7d3ee9cca70c057 *DESCRIPTION
 e7a4cefc7ec2f50f87ce4227b2464da6 *LICENSE
-64933384a3995cdff3889c975f975fcb *NAMESPACE
-fcd51509a630056eb300a77cbf486108 *R/api.R
+20a3891c8333746bad9ddbd4f79ab486 *NAMESPACE
+b6c95a1bb988b1fe0c22e5ce7bfffa76 *R/api.R
 f9ed8ffbfde9712cc90364571e77502e *man/PTMTypes.Rd
 09db95d3ae273a96f84b052367a3f10f *man/Role.Rd
 d2ff89422a875fe61586a05ca5675d12 *man/TermType.Rd
+7f0ec5a58a6732ef4830e70f5f133f83 *man/get_api_version.Rd
 9ff229babb9dd23a4bf155fc45d547ab *man/get_host_url.Rd
 032c7a7be80374fc8449ec680ba93286 *man/get_info.Rd
 4cadb57b742842c433d99a7a4f40292a *man/get_ppi_for_proteoforms.Rd
@@ -17,6 +18,7 @@ a478c2df0d756a278cd0c538de6d8ed2 *man/get_ptm_ppi_from_list.Rd
 f2bc9f4f806281a42b49257d47c06953 *man/get_substrates.Rd
 302584a711e8b72671ecf42067b22ce5 *man/get_variants.Rd
 8a8704070aa82374261cfa48fc1208e5 *man/search_iptmnet.Rd
+a5fd2cd795dc2b955a97c9e73b601049 *man/set_api_version.Rd
 660561449761cf2f80bd8e667d534b1e *man/set_host_url.Rd
 9fddf9d928efed189a18a3ae297a297b *tests/testthat.R
 6722eeba329623fc0b03302f92c278c0 *tests/testthat/egfr_sites_formatted.txt
